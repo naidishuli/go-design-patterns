@@ -1,0 +1,65 @@
+~ Functions
+    - functions are typed entities that can either be named or be assigned to a variable as a value
+    - in go functions can return multiple types
+
+~ Strongly typed
+    - all values in GO are statically typed, however it offers also a simple expressive types system
+    that can have the feel of a dynamic language.
+
+    const grams = 100.0
+    var name = "Jessie Rose"
+
+~ Ability to create new types based on the underlying ones:
+    type myNewType int32
+
+    type newStruct struct{
+        name string
+        number int
+        weight myNewType
+    }
+
+    - and also attach ability to it like:
+
+    func(mass myNewType) newAttachedFunction(){
+        //do something here
+    }
+
+~ Interfaces
+    - Staying true to its simplistic
+        nature, implementing a Go interface does not require a keyword to explicitly declare an
+        interface. Instead, the type system implicitly resolves implemented interfaces using the
+        methods attached to a type.
+
+    type Stringer interface {
+        String() string
+    }
+
+    type metalloid struct {
+        name string
+        number int32
+        weight amu
+    }
+
+    func (m metalloid) String() string {
+        return fmt.Sprintf(
+            "%-10s %-10d %-10.3f %e",
+             m.name, m.number, m.weight.float(), atoms(moles(m.weight)),
+        )
+
+
+    - so without doing anything else 'metalloid' automatically implements the Stringer interface
+
+~ Concurrency and channels
+    - One of the main features that has rocketed Go to its current level of adoption is its inherent
+      support for simple concurrency idioms. The language uses a unit of concurrency known as
+      a goroutine, which lets programmers structure programs with independent and highly
+      concurrent code.
+
+~ Tools
+    - gofmt -> format the code by the GO idiomatic way
+    - govet -> goes much further by analyzing your code for structural problems with code elements
+
+
+~ Panic & recover
+    - for a panic that can happens everywhere in the code in GO we can specify a recover function ,to wich as parameter
+      is passed the value given to the panic() function.

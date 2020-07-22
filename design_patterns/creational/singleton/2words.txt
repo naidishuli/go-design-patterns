@@ -1,0 +1,22 @@
+As a general guide, we consider using the Singleton pattern when the following rule applies:
+    - We need a single, shared value, of some particular type.
+    - We need to restrict object creation of some type to a single unit along the entire
+        program.
+
+You'll use the Singleton pattern in many different situations. For example:
+    - When you want to use the same connection to a database to make every query
+    - When you open a Secure Shell (SSH) connection to a server to do a few tasks,
+        and don't want to reopen the connection for each task
+    - If you need to limit the access to some variable or space, you use a Singleton as
+        the door to this variable (we'll see in the following chapters that this is more
+        achievable in Go using channels anyway)
+    - If you need to limit the number of calls to some places, you create a Singleton
+        instance to make the calls in the accepted window
+
+Just keep in mind that the Singleton pattern will giveyou the power to have a unique instance of
+some struct in your application and that no package can create any clone of this struct.
+With Singleton, you are also hiding the complexity of creating the object, in case it requires
+some computation, and the pitfall of creating it every time you need an instance of it if all of
+them are similar. All this code writing, checking if the variable already exists, and storage,
+are encapsulated in the singleton and you won't need to repeat it everywhere if you use a
+global variable.
